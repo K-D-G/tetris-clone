@@ -1,6 +1,7 @@
 GPP:=g++
-GPPPARAMS:=-Iinclude -I/usr/local/Cellar/sfml/2.5.1_1/include
+GPPPARAMS:=-g -Iinclude -I/usr/local/Cellar/sfml/2.5.1_1/include
 OBJECTS:=obj/tetris/utils.o \
+				 obj/tetris/piece.o \
 				 obj/tetris/game.o
 
 obj/%.o: src/%.cpp
