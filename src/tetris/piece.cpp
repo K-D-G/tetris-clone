@@ -64,3 +64,14 @@ void Piece::rotate(){
   }
   piece_map=temp_piece_map;
 }
+
+std::string& Piece::get_piece_map(){
+  return piece_map;
+}
+
+int* Piece::get_block_position(){
+  int* result=new int[2];
+  result[0]=static_cast<int>(x/BLOCK_SIZE);
+  result[1]=static_cast<int>(y/BLOCK_SIZE);
+  return result;
+}

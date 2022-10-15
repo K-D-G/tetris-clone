@@ -22,6 +22,9 @@ namespace Tetris{
     void update(float dt, float fall_speed);
     void move(int direction);
     void rotate(); //90 degrees clockwise
+
+    std::string& get_piece_map();
+    int* get_block_position();
   };
 }
 

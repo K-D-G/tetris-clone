@@ -19,7 +19,7 @@ namespace Tetris{
     float dt;
     bool fast_fall;
 
-    std::vector<Piece> set_pieces;
+    std::array<std::string, WIDTH_BLOCKS> map;
     Piece current_piece;
     Piece next_piece;
 

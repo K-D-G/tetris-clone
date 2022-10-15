@@ -20,6 +20,11 @@ Game::Game(sf::RenderWindow& win):window(win), current_piece(), next_piece(), fa
   colours[5]=sf::Color::Blue;
   colours[6]=sf::Color(255, 165, 0); //Orange
 
+  //Top to bottom
+  for(int i=0; i<map.size(); i++){
+    map[i]=std::string(WIDTH_BLOCKS, ' ');
+  }
+
   current_piece=Piece(piece_layout[random(0, 6)], colours[random(0, 6)], WIDTH*0.5f, -5*BLOCK_SIZE);
   next_piece=Piece(piece_layout[random(0, 6)], colours[random(0, 6)], WIDTH*0.5f, -5*BLOCK_SIZE);
 
@@ -57,7 +62,20 @@ void Game::start(){
         }
       }
     }
+
+    int* current_location=current_piece.get_block_position();
+    std::string& current_piece_map=current_piece.get_piece_map();
+    for(int i=0; i<4; i++){
+      for(int j=0; j<4; j++){
+        //Calculate change that will be made in the update line
+        //Evaluate if it collides
+        //If it does stop it, check for line completion and game over, get new piece
+        //and update score
+      }
+    }
+
     current_piece.update(dt, ((fast_fall)?PRESSED_FALL_SPEED:FALL_SPEED));
+
     window.clear();
     current_piece.draw(window);
     window.display();
