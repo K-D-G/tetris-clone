@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <iostream>
 
 #include <tetris/utils.h>
@@ -14,6 +15,10 @@ namespace Tetris{
     //sf::RectangleShape block;
     std::vector<sf::RectangleShape> blocks;
     float x, y;
+    int width;
+    int lowest_point;
+
+    void calculate_width();
   public:
     Piece();
     Piece(std::string _piece_map, sf::Color _colour, float _x, float _y);
@@ -25,6 +30,9 @@ namespace Tetris{
 
     std::string& get_piece_map();
     int* get_block_position();
+    int get_width();
+    int get_lowest_point();
+    void set_position(float _x, float _y);
   };
 }
 

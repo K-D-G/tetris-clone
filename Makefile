@@ -17,6 +17,12 @@ run:
 	make tetris
 	./tetris.out
 
+debug:
+	clear
+	make clean
+	make tetris
+	lldb --file tetris.out
+
 .PHONY: clean
 clean:
 	rm -rf obj tetris

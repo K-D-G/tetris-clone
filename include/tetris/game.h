@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <array>
+#include <algorithm>
 #include<iostream>
 
 #include <tetris/utils.h>
@@ -21,19 +22,25 @@ namespace Tetris{
     sf::Text score_text;
     int score;
 
-    float dt;
-    bool fast_fall;
+    sf::Text game_over_text;
+    bool game_over;
 
-    std::array<std::string, WIDTH_BLOCKS> map;
+    float time;
+    bool fast_fall;
+    bool collision;
+
+    std::vector<std::string> map;
     Piece current_piece;
     Piece next_piece;
 
     std::array<std::string, 7> piece_layout;
     std::array<sf::Color, 7> colours;
+    sf::RectangleShape block;
   public:
     Game(sf::RenderWindow& win);
 
     int start();
+    void update_piece(int direction);
   };
 }
 
