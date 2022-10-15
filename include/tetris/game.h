@@ -1,3 +1,11 @@
+/**
+ * @file game.h
+ * @brief header definition for the main game class which controls game logic
+ *
+ * @author Kieran Grayshon
+ * @contact kieran.david.grayshon@gmail.com
+ *
+*/
 #ifndef TETRIS__GAME_H
 #define TETRIS__GAME_H
 #include <SFML/Graphics.hpp>

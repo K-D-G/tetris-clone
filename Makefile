@@ -1,15 +1,16 @@
 GPP:=g++
-GPPPARAMS:=-g -Iinclude -I/usr/local/Cellar/sfml/2.5.1_1/include
+GPPPARAMS=-Iinclude -I/usr/local/Cellar/sfml/2.5.1_1/include
 OBJECTS:=obj/tetris/utils.o \
 				 obj/tetris/piece.o \
 				 obj/tetris/game.o
 
+
 obj/%.o: src/%.cpp
 		mkdir -p $(@D)
-		$(GPP) $(GPPPARAMS) -o $@ -c $<
+		$(GPP) $(DEBUG) $(GPPPARAMS) -o $@ -c $<
 
 tetris:$(OBJECTS)
-	g++ $(OBJECTS) $(GPPPARAMS) -L/usr/local/Cellar/sfml/2.5.1_1/lib src/tetris/main.cpp -o tetris.out -lsfml-graphics -lsfml-window -lsfml-system
+	g++ $(OBJECTS) $(DEBUG) $(GPPPARAMS) -L/usr/local/Cellar/sfml/2.5.1_1/lib src/tetris/main.cpp -o tetris.out -lsfml-graphics -lsfml-window -lsfml-system
 
 run:
 	clear
@@ -20,7 +21,7 @@ run:
 debug:
 	clear
 	make clean
-	make tetris
+	make tetris DEBUG='-g'
 	lldb --file tetris.out
 
 .PHONY: clean

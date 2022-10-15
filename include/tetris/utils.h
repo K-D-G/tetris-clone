@@ -1,3 +1,11 @@
+/**
+ * @file utils.h
+ * @brief header definition for global constants
+ *
+ * @author Kieran Grayshon
+ * @contact kieran.david.grayshon@gmail.com
+ *
+*/
 #ifndef TETRIS__UTILS_H
 #define TETRIS__UTILS_H
 

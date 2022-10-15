@@ -1,5 +1,14 @@
+/**
+ * @file piece.h
+ * @brief header definition for a tetris piece
+ *
+ * @author Kieran Grayshon
+ * @contact kieran.david.grayshon@gmail.com
+ *
+*/
 #ifndef TETRIS__PIECE_H
 #define TETRIS__PIECE_H
+
 #include <SFML/Graphics.hpp>
 
 #include <string>
@@ -12,7 +21,6 @@
 namespace Tetris{
   class Piece{
     std::string piece_map;
-    //sf::RectangleShape block;
     std::vector<sf::RectangleShape> blocks;
     float x, y;
     int width;
