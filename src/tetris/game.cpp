@@ -120,6 +120,17 @@ int Game::start(){
       }
     }
 
+    //If the game is over we stop the drawing new data
+    //And draw game over information with the score
+    if(game_over){
+      score_text.setPosition(WIDTH*0.5, HEIGHT*0.6);
+      score_text.setOrigin(score_text.getLocalBounds().width*0.5, score_text.getLocalBounds().height*0.5);
+      window.draw(score_text);
+      window.draw(game_over_text);
+      window.display();
+      continue;
+    }
+
     //Move the current piece downwards
     update_piece(1);
 
@@ -208,27 +219,19 @@ int Game::start(){
     //Update the UI score
     score_text.setString("Score: "+std::to_string(score));
 
-    //If the game is over we stop the drawing new data
-    //And draw game over information with the score
-    if(game_over){
-      score_text.setPosition(WIDTH*0.5, HEIGHT*0.6);
-      score_text.setOrigin(score_text.getLocalBounds().width*0.5, score_text.getLocalBounds().height*0.5);
-      window.draw(score_text);
-      window.draw(game_over_text);
-    }else{
-      //If not clear the screen, draw the map and the current piece
-      window.clear();
-      for(int i=0; i<map.size(); i++){
-        for(int j=0; j<map[i].length(); j++){
-          if(map[i][j]=='X'){
-            block.setPosition(j*BLOCK_SIZE, i*BLOCK_SIZE);
-            window.draw(block);
-          }
+    //Clear the screen, draw the map and the current piece
+    window.clear();
+    for(int i=0; i<map.size(); i++){
+      for(int j=0; j<map[i].length(); j++){
+        if(map[i][j]=='X'){
+          block.setPosition(j*BLOCK_SIZE, i*BLOCK_SIZE);
+          window.draw(block);
         }
       }
-      current_piece.draw(window);
-      window.draw(score_text);
     }
+    current_piece.draw(window);
+    window.draw(score_text);
+    
     window.display();
   }
   return 0;
