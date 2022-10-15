@@ -7,6 +7,5 @@ using namespace Tetris;
 int main(){
   sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), TITLE);
   Game game(window);
-  game.start();
-  return 0;
+  return game.start();
 }

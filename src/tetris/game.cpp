@@ -27,10 +27,21 @@ Game::Game(sf::RenderWindow& win):window(win), current_piece(), next_piece(), fa
 
   current_piece=Piece(piece_layout[random(0, 6)], colours[random(0, 6)], WIDTH*0.5f, -5*BLOCK_SIZE);
   next_piece=Piece(piece_layout[random(0, 6)], colours[random(0, 6)], WIDTH*0.5f, -5*BLOCK_SIZE);
-
 }
 
-void Game::start(){
+int Game::start(){
+  if(!font.loadFromFile("NotoSansMono-Bold.ttf")){
+    std::cerr<<"Error loading font!"<<std::endl;
+    return -1;
+  }
+  score_text.setFont(font);
+  score_text.setCharacterSize(48);
+  score_text.setFillColor(sf::Color::White);
+  score_text.setStyle(sf::Text::Bold);
+  score_text.setString("Score: 0");
+  score_text.setPosition(sf::Vector2f(0.0f, 0.0f));
+
+  score=0;
   while(window.isOpen()){
     dt=clock.restart().asSeconds();
     while(window.pollEvent(event)){
@@ -73,11 +84,14 @@ void Game::start(){
         //and update score
       }
     }
+    score_text.setString("Score: "+std::to_string(score));
 
     current_piece.update(dt, ((fast_fall)?PRESSED_FALL_SPEED:FALL_SPEED));
 
     window.clear();
     current_piece.draw(window);
+    window.draw(score_text);
     window.display();
   }
+  return 0;
 }

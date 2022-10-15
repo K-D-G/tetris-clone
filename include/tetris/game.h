@@ -16,6 +16,11 @@ namespace Tetris{
     sf::RenderWindow& window;
     sf::Event event;
     sf::Clock clock;
+
+    sf::Font font;
+    sf::Text score_text;
+    int score;
+
     float dt;
     bool fast_fall;
 
@@ -28,7 +33,7 @@ namespace Tetris{
   public:
     Game(sf::RenderWindow& win);
 
-    void start();
+    int start();
   };
 }
 
